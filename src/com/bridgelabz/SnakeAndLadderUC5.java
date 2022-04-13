@@ -1,7 +1,7 @@
 package com.bridgelabz;
 import java.util.Random;
 
-public class SnakeAndLadderUC4 {
+public class SnakeAndLadderUC5 {
     public static void main(String[] args) {
         int position = 0;
 
@@ -16,7 +16,6 @@ public class SnakeAndLadderUC4 {
         game.rollingDice(position, dice);
     }
 }
-
     class Game{
 
         public void rollingDice(int position, int dice){
@@ -32,17 +31,21 @@ public class SnakeAndLadderUC4 {
 
                     case 2:
                         position = position + dice;
-                        //System.out.println("After ladder your position is: " + position);
+                        if (position > 100){
+                            position = (position - dice);
+                            continue;
+                        }
+                        System.out.println("After ladder your position is: " + position);
                         break;
 
                     case 3:
                         position = position - dice;
-                        //System.out.println("After snake your position is: " + position);
+                        if (position < 0){
+                            position = 0;
+                        }
+                        System.out.println("After snake your position is: " + position);
                         break;
                 }
-            }
-            if (position < 0){
-                position = 0;
             }
             System.out.println("Your Position:" +position);
         }
